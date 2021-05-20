@@ -7,11 +7,12 @@ def index(request):
     todo = Todo.objects.all()
     if request.method == 'POST':
         new_todo = Todo(
-            title = request.POST['title']
+            title=request.POST['title']
         )
         new_todo.save()
         return redirect('/')
-    return render(request, 'index.html', {'todos':todo})
+
+    return render(request, 'index.html', {'todos': todo})
 
 def delete(request, pk):
     todo = Todo.objects.get(id=pk)
